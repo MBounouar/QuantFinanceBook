@@ -56,9 +56,11 @@ def mainCalculation():
     
     for k in range(1,m*T+1):
         tGrid = np.linspace(float((k-1))/m, float(k)/m, 100)
-        g_m   = m * integrate.trapz(np.squeeze(f(tGrid)),np.squeeze(tGrid))
+        g_m   = m * integrate.trapezoid(np.squeeze(f(tGrid)),np.squeeze(tGrid))
         plt.plot(tGrid,g_m * np.ones([len(tGrid),1]),'-r',linewidth=3.0)
         plt.plot(tGrid[0],g_m,'or')
         plt.plot(tGrid[-1],g_m,'or',markerfacecolor =[1,1,1])
+    
+    plt.show()
         
 mainCalculation()

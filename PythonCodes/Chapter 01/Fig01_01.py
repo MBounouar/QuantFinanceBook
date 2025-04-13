@@ -12,7 +12,7 @@ from mpl_toolkits import mplot3d
 def plotNormalPDF_CDF_CHF():
     mu    = 10.0
     sigma = 1.0
-    i     = np.complex(0,1)
+    i     = complex(0,1)
     chf   = lambda u: np.exp(i * mu * u - sigma * sigma * u * u / 2.0)
     pdf   = lambda x: st.norm.pdf(x,mu,sigma)
     cdf   = lambda x: st.norm.cdf(x,mu,sigma)
@@ -46,5 +46,7 @@ def plotNormalPDF_CDF_CHF():
     y = np.imag(chfV)
     ax.plot3D(u, x, y, 'blue')
     ax.view_init(30, -120)
+
+    plt.show()
     
 plotNormalPDF_CDF_CHF()
