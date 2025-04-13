@@ -47,3 +47,5 @@ plt.grid()
 plt.xlabel("time")
 plt.ylabel("value")
 plt.title("Integrated Brownian Motion paths")
+
+plt.show()

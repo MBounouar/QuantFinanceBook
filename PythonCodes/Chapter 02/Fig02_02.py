@@ -7,7 +7,6 @@ Paths for the GBM and ABM
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as st
-from mpl_toolkits import mplot3d
 
 def GeneratePathsGBMABM(NoOfPaths,NoOfSteps,T,r,sigma,S_0):    
     Z = np.random.normal(0.0,1.0,[NoOfPaths,NoOfSteps])
@@ -115,5 +114,7 @@ def mainCalculation():
         x1 = np.zeros([len(y1),1]) + ti
         z1 = lognnormPDF(y1,ti)
         ax.plot3D(x1, y1, z1, 'red')
+
+    plt.show()
                     
 mainCalculation()

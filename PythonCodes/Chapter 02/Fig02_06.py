@@ -7,11 +7,14 @@ Maximum Likelihood Estimation for the Tesla stock
 import numpy as np
 import matplotlib.pyplot as plt
 
+import MarketData
 
-# Market Data - PLEASE COPY these from the corresponding MATLAB CODE
+# Market Data - From MarketData.py
+dateS = np.array(MarketData.dateS())
+S     = np.array(MarketData.S())
 
-dateS = []
-S     = []
+print(type(dateS))
+print(type(S))
 
 def MLE(dateS,S):
     X     = np.log(S)
@@ -28,7 +31,7 @@ def MLE(dateS,S):
     
     # Maximum Likelihood Estimation of sigma
 
-    s = 0;
+    s = 0
     for i in range(0,len(X)-1):
         s = s + np.power(X[i+1]-X[i]-mu*dt,2)
     sigma = np.sqrt(s/(m*dt))
@@ -36,8 +39,10 @@ def MLE(dateS,S):
     
     # Monte Carlo simulation -- Forecasting
 
-    NoOfPaths    = 10; # plot 10 paths
-    NoOfSteps    = 160; # for about 0.5 year
+    NoOfPaths    = 10 # plot 10 paths
+    NoOfSteps    = 160 # for about 0.5 year
+    print(f'NoOfSteps = {NoOfSteps}')
+    print(f'NoOfPaths = {NoOfPaths}')
     Z            =  np.random.normal(0.0,1.0,[NoOfPaths,NoOfSteps])
     Xsim         =  np.zeros([NoOfPaths,NoOfSteps])
     Xsim[:,0]    =  np.log(S[-1])
@@ -46,4 +51,8 @@ def MLE(dateS,S):
         Z[:,i]         = (Z[:,i]-np.mean(Z[:,i]))/np.std(Z[:,i])
         Xsim[:,i+1]    = Xsim[:,i] + mu*dt + sigma*np.sqrt(dt)*Z[:,i]
     plt.plot(range(dateS[-1],dateS[-1]+NoOfSteps),np.exp(np.transpose(Xsim)),'-r')
+
+    plt.show()
+
+
 MLE(dateS,S)

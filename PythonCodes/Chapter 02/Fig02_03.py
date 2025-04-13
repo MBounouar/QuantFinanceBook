@@ -34,4 +34,7 @@ def PlotNormalDensity():
     for sigma in sigmaV:
         plt.plot(x,st.norm.pdf(x,0,sigma))
     plt.legend(['sigma =0.25','sigma =0.75','sigma =1.25','sigma =1.75',])
+
+    plt.show()
+
 PlotNormalDensity()
