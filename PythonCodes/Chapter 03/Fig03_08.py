@@ -7,9 +7,7 @@ Hedging with the Black Scholes model
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as st
-import enum 
-from mpl_toolkits import mplot3d
-from scipy.interpolate import RegularGridInterpolator
+import enum
 
 # This class defines puts and calls
 
@@ -139,4 +137,7 @@ def mainCalculation():
     for i in range(0,NoOfPaths):
         print('path_id = {0:2d}, PnL(t_0)={1:0.4f}, PnL(Tm-1) ={2:0.4f},S(t_m) = {3:0.4f}, max(S(tm)-K,0)= {4:0.4f}, PnL(t_m) = {5:0.4f}'.format(i,PnL[0,0],
               PnL[i,-2],S[i,-1],np.max(S[i,-1]-K,0),PnL[i,-1]))
+    
+    plt.show()
+
 mainCalculation()

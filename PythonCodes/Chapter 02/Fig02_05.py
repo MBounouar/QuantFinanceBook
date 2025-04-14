@@ -84,5 +84,7 @@ def MainCode():
     plt.plot(time,eSM_P(time),'r--')
     plt.plot(time, np.transpose(S_Pdisc),'blue')   
     plt.legend(['E^P[S(t)/M(t)]','paths S(t)/M(t)'])
+
+    plt.show()
     
 MainCode()

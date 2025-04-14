@@ -55,5 +55,7 @@ def mainCalculation():
     plt.plot(T,K,'ok')
     for ti in Tcall:
         plt.plot(ti*np.ones([300,1]),range(0,300),'--k')
+    
+    plt.show()
        
 mainCalculation()

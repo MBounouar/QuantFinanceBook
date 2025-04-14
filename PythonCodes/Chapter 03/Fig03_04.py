@@ -7,8 +7,7 @@ GBM path and corresponding Greeks
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as st
-import enum 
-from mpl_toolkits import mplot3d
+import enum
 from scipy.interpolate import RegularGridInterpolator
 
 # This class defines puts and calls
@@ -141,7 +140,7 @@ def mainCalculation():
     # Plot the call option surface 
 
     fig = plt.figure(2)
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(projection='3d')
     ax.plot_surface(TM, s0M, callOptM, color=[1,0.5,1])
     plt.xlabel('t')
     plt.ylabel('S(t)')
@@ -165,7 +164,7 @@ def mainCalculation():
      # Plot the put surface.    
 
     fig = plt.figure(3)
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(projection='3d')
     ax.plot_surface(TM, s0M, putOptM, color=[1,0.5,1])
     plt.xlabel('t')
     plt.ylabel('S(t)')
@@ -190,7 +189,7 @@ def mainCalculation():
     # Plot the Delta for a call option surface    
 
     fig = plt.figure(4)
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(projection='3d')
     ax.plot_surface(TM, s0M, deltaCallM, color=[1,0.5,1])
     plt.xlabel('t')
     plt.ylabel('S(t)')
@@ -214,7 +213,7 @@ def mainCalculation():
     # Plot the Vega option surface.    
 
     fig = plt.figure(5)
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(projection='3d')
     ax.plot_surface(TM, s0M, vegaM, color=[1,0.5,1])
     plt.xlabel('t')
     plt.ylabel('S(t)')
@@ -239,7 +238,7 @@ def mainCalculation():
     # Plot the Gamma option surface    
 
     fig = plt.figure(6)
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(projection='3d')
     ax.plot_surface(TM, s0M, gammaM, color=[1,0.5,1])
     plt.xlabel('t')
     plt.ylabel('S(t)')
@@ -260,4 +259,7 @@ def mainCalculation():
 
     ax.plot3D(np.array(timeTemp),np.array(pathTemp),np.array(vTemp), 'blue')
     #ax.view_init(30, -120)
+
+    plt.show()
+
 mainCalculation()
